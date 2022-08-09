@@ -1,0 +1,57 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+    <style>
+        header h2{
+            margin-top:150px;
+            text-align: center;
+        }
+    #blogs{
+        text-decoration: none;
+    }
+    </style>
+{#    {% if blogs.count > 1 %}#}
+{#        <h2>Roman has written {{ blogs.count }} blogs</h2>#}
+{#    {% else %}#}
+{#        <h2>Roman has written {{ blogs.count }} blog</h2>#}
+{#    {% endif %}#}
+    <header>
+        <h2>Roman has written {{ blogs.count }} blog{{ blogs.count|pluralize }}</h2>
+    </header>
+{#    {% for blog in blogs %}#}
+{#        <a href="{% url 'blog:detail' blog.id %}">#}
+{#            <h2>{{ blog.title }}</h2>#}
+{#        </a>#}
+{#        <h5>{{ blog.date }}</h5>#}
+{#        <h5>{{ blog.date|date:'M d Y' }}</h5>#}
+{#        <p>{{ blog.description|truncatechars:10 }}</p>#}
+{#    {% endfor %}#}
+    {% for blog in blogs %}
+        <a href="{% url 'blog:detail' blog.id %}" id="blogs">
+            <div class="card text-dark bg-warning mb-3">
+              <div class="card-header">{{ blog.date|date:'M d Y' }}</div>
+              <div class="card-body">
+                <h5 class="card-title">{{ blog.title }}</h5>
+                <p class="card-text">{{ blog.description|truncatechars:10}}</p>
+              </div>
+            </div>
+        </a>
+    {% endfor %}
+
+{% endblock %}
+{#{% block content %}#}
+{#    <main>#}
+{#        <div class="container">#}
+{#        <header>#}
+{#            <h1>BLOG</h1>#}
+{#        </header>#}
+{#        <a href="{%  url 'detail %}"#}
+{#            {% for blog in blogs %}#}
+{#                <p>#}
+{#                    {{ blog.title }}#}
+{#                    <img src="{{ blog.image.url }}" alt="" width="150">#}
+{#                    {{ blog.date }}#}
+{#                </p>#}
+{#            {% endfor %}#}
+{#        </div>#}
+{#    </main>#}
+{#{% endblock %}#}

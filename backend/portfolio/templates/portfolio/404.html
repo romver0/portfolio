@@ -1,0 +1,16 @@
+{#<h4>Ошибочка!Такой странциы нет</h4>#}
+{#<p>#}
+{#    <a href="{% url 'home' %}">HOME</a>#}
+{#</p>#}
+<style>
+    header{
+        {#margin-top: 150px;#}
+        text-align: center;
+        vertical-align: middle;
+        color: red;
+    }
+</style>
+{% extends 'blog/base.html' %}
+{% block content %}
+    <header>Такой страницы не существует!</header>
+{% endblock %}
